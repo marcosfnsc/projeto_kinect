@@ -1,5 +1,5 @@
 build/
-vcpkg/
+third_party/
 
 # Prerequisites
 *.d

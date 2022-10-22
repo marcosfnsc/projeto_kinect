@@ -1,7 +1,0 @@
-{
-  "name": "projeto-kinect", 
-  "version": "1.0.0",
-  "dependencies": [
-    "freeglut"
-    ]
-}
