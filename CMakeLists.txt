@@ -6,11 +6,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-ExternalProject_Add(vcpkg
-  GIT_REPOSITORY https://github.com/microsoft/vcpkg.git
-  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTERNAL_INSTALL_LOCATION}
-)
-
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 
