@@ -6,6 +6,7 @@ WORKDIR /build
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get -y install \
   #libusb-dev \
+  build-essential \
   cmake \
   git \
   libusb-1.0 \
