@@ -4,3 +4,14 @@
 [ ! -d "third_party/freeglut"     ] && git clone --depth 1 --branch v3.4.0        https://github.com/FreeGLUTProject/freeglut.git third_party/freeglut
 [ ! -d "third_party/libfreenect"  ] && git clone --depth 1 --branch v0.6.4        https://github.com/OpenKinect/libfreenect.git   third_party/libfreenect
 [ ! -d "third_party/libfreenect2" ] && git clone --depth 1 --branch v0.2.1        https://github.com/OpenKinect/libfreenect2.git  third_party/libfreenect2
+
+WORKDIR=$PWD
+
+# compile libfreenect
+cd third_party/libfreenect
+cmake \
+  -DBUILD_REDIST_PACKAGE=OFF \
+  -DBUILD_OPENNI2_DRIVER=ON \
+  -DBUILD_PYTHON3=ON \
+  -DOpenGL_GL_PREFERENCE=GLVND .
+make
