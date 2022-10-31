@@ -10,3 +10,12 @@ RUN apt-get -y install \
   git \
   libusb-1.0 \
   python3-numpy
+
+# create user non root
+ARG UID=1000
+ARG GID=1000
+
+RUN groupadd -g "${GID}" user_name \
+  && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" user_name
+
+USER user_name
