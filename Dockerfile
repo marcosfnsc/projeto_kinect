@@ -8,8 +8,11 @@ RUN apt-get -y install \
   #libusb-dev \
   build-essential \
   cmake \
+  cython3 \
+  freeglut3-dev \
   git \
   libusb-1.0 \
+  python3-dev \
   python3-numpy
 
 # create user non root
