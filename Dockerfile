@@ -10,9 +10,9 @@ RUN apt-get update && apt-get -y install \
   cython3 \
   freeglut3-dev \
   git \
-  libjpeg-turbo-progs \
-  libjpeg62-turbo \
-  libjpeg62-turbo-dev \
+  libjpeg-dev \
+  libturbojpeg0 \
+  libturbojpeg0-dev \
   libusb-1.0 \
   libva-dev \
   libva-drm2 \
