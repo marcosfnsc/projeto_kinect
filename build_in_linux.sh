@@ -34,3 +34,9 @@ cmake \
   -DENABLE_TEGRAJPEG=OFF \
   -DBUILD_EXAMPLES=ON
 make
+
+cd $WORKDIR
+
+echo "compiling the project"
+cmake -B build
+cmake --build build
