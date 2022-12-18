@@ -7,7 +7,7 @@
 //#include <libfreenect2/logger.h>
 //#include <libfreenect2/registration.h>
 
-int main () {
+int main() {
   libfreenect2::Freenect2 freenect2;
   libfreenect2::Freenect2Device *dev = 0;
   libfreenect2::PacketPipeline *pipeline = 0;
