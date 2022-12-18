@@ -7,6 +7,6 @@ services:
       args:
         - "UID=${UID:-1000}"
         - "GID=${GID:-1000}"
-    command: ./build_in_linux.sh
+    command: ./build_for_linux.sh
     volumes:
       - .:/build
