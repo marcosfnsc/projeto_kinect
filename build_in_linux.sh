@@ -32,11 +32,14 @@ cmake \
   -DENABLE_OPENCL=ON \
   -DENABLE_CUDA=OFF \
   -DENABLE_TEGRAJPEG=OFF \
-  -DBUILD_EXAMPLES=ON
+  -DBUILD_EXAMPLES=ON \
+  -DCMAKE_INSTALL_PREFIX=.
 make
+make install
 
 cd $WORKDIR
 
 echo "compiling the project"
-cmake -B build
+cmake -B build \
+  -Dfreenect2_DIR=third_party/libfreenect2
 cmake --build build
