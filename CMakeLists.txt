@@ -17,3 +17,4 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 file(GLOB SOURCES "src/*.cpp")
 
 add_executable(proj_kinect ${SOURCES})
+target_link_libraries(proj_kinect ${PROJECT_SOURCE_DIR}/third_party/libfreenect2/lib/libfreenect2.so)
