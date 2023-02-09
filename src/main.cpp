@@ -1,4 +1,5 @@
 #include <iostream>
+#include <libfreenect2/frame_listener.hpp>
 #include <string>
 
 #include <libfreenect2/frame_listener_impl.h>
@@ -16,14 +17,25 @@ int main() {
     std::cout << "no device connected!" << std::endl;
     return -1;
   }
-  std::string serial;
-  if (serial == "") {
-    serial = freenect2.getDefaultDeviceSerialNumber();
-  }
+
+  std::string serial = freenect2.getDefaultDeviceSerialNumber();
+  std::cout << "serial: " << serial << std::endl;
 
   pipeline = new libfreenect2::CpuPacketPipeline();
   dev = freenect2.openDevice(serial, pipeline);
-  std::cout << dev->getSerialNumber() << std::endl;
+  if (!dev) {
+    std::cout << "erro ao conectar ao dispositivo" << std::endl;
+    return -1;
+  }
+
+  // listener
+  libfreenect2::SyncMultiFrameListener listener(libfreenect2::Frame::Color | libfreenect2::Frame::Depth | libfreenect2::Frame::Ir);
+  libfreenect2::FrameMap frames;
+
+  // start
+  dev->start();
+  std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
+  std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
 
   return 0;
 }
