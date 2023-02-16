@@ -31,11 +31,17 @@ int main() {
                                                 libfreenect2::Frame::Depth |
                                                 libfreenect2::Frame::Ir);
   libfreenect2::FrameMap frames;
+  dev->setColorFrameListener(&listener);
+  dev->setIrAndDepthFrameListener(&listener);
 
   // start
   dev->start();
   std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
   std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
+
+  // stop
+  dev->stop();
+  dev->close();
 
   return 0;
 }
