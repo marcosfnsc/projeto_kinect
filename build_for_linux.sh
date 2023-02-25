@@ -4,6 +4,7 @@
 [ ! -d "third_party/freeglut"     ] && git clone --depth 1 --branch v3.4.0        https://github.com/FreeGLUTProject/freeglut.git third_party/freeglut
 [ ! -d "third_party/libfreenect"  ] && git clone --depth 1 --branch v0.6.4        https://github.com/OpenKinect/libfreenect.git   third_party/libfreenect
 [ ! -d "third_party/libfreenect2" ] && git clone --depth 1 --branch v0.2.1        https://github.com/OpenKinect/libfreenect2.git  third_party/libfreenect2
+[ ! -d "third_party/opencv"       ] && git clone --depth 1 --branch v4.7.0        https://github.com/opencv/opencv.git            third_party/opencv
 
 WORKDIR=$PWD
 
@@ -18,7 +19,6 @@ cmake \
 
 # Fix cython3 path
 sed -i 's/CYTHON_EXECUTABLE:FILEPATH=CYTHON_EXECUTABLE-NOTFOUND/CYTHON_EXECUTABLE:FILEPATH=\/usr\/bin\/cython3/g' CMakeCache.txt
-
 make
 
 cd $WORKDIR
