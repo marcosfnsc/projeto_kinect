@@ -35,7 +35,12 @@ cmake \
   -DBUILD_EXAMPLES=ON \
   -DCMAKE_INSTALL_PREFIX=.
 make
-make install
+
+cd $WORKDIR
+
+## compile opencv
+cd third_party/opencv
+cmake --build .
 
 cd $WORKDIR
 
