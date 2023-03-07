@@ -17,6 +17,7 @@ RUN apt-get update && apt-get -y install \
   libva-dev \
   libva-drm2 \
   libva2 \
+  ninja-build \
   pkg-config \
   python3-dev \
   python3-numpy
