@@ -40,7 +40,7 @@ cd $WORKDIR
 
 ## compile opencv
 cd third_party/opencv
-cmake -B build
+cmake -G Ninja -B build
 cmake --build build
 
 cd $WORKDIR
