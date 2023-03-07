@@ -8,18 +8,18 @@
 
 WORKDIR=$PWD
 
-## compile libfreenect
-cd third_party/libfreenect
-echo "compiling libfreenect"
-cmake \
-  -DBUILD_REDIST_PACKAGE=OFF \
-  -DBUILD_OPENNI2_DRIVER=ON \
-  -DBUILD_PYTHON3=ON \
-  -DOpenGL_GL_PREFERENCE=GLVND .
-
-# Fix cython3 path
-sed -i 's/CYTHON_EXECUTABLE:FILEPATH=CYTHON_EXECUTABLE-NOTFOUND/CYTHON_EXECUTABLE:FILEPATH=\/usr\/bin\/cython3/g' CMakeCache.txt
-make
+### compile libfreenect
+#cd third_party/libfreenect
+#echo "compiling libfreenect"
+#cmake \
+  #-DBUILD_REDIST_PACKAGE=OFF \
+  #-DBUILD_OPENNI2_DRIVER=ON \
+  #-DBUILD_PYTHON3=ON \
+  #-DOpenGL_GL_PREFERENCE=GLVND .
+#
+## Fix cython3 path
+#sed -i 's/CYTHON_EXECUTABLE:FILEPATH=CYTHON_EXECUTABLE-NOTFOUND/CYTHON_EXECUTABLE:FILEPATH=\/usr\/bin\/cython3/g' CMakeCache.txt
+#make
 
 cd $WORKDIR
 
