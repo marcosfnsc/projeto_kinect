@@ -27,6 +27,7 @@ cd $WORKDIR
 cd third_party/libfreenect2
 echo "compiling libfreenect2"
 cmake \
+  -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_CXX11=ON \
   -DENABLE_OPENCL=ON \
@@ -34,12 +35,13 @@ cmake \
   -DENABLE_TEGRAJPEG=OFF \
   -DBUILD_EXAMPLES=ON \
   -DCMAKE_INSTALL_PREFIX=.
-make
+cmake --build .
 
 cd $WORKDIR
 
 ## compile opencv
 cd third_party/opencv
+echo "compiling opencv"
 cmake -G Ninja -B build
 cmake --build build
 
