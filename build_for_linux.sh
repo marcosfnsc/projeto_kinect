@@ -28,6 +28,7 @@ cd third_party/libfreenect2
 echo "compiling libfreenect2"
 cmake \
   -G Ninja \
+  -B build \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_CXX11=ON \
   -DENABLE_OPENCL=ON \
@@ -35,7 +36,7 @@ cmake \
   -DENABLE_TEGRAJPEG=OFF \
   -DBUILD_EXAMPLES=ON \
   -DCMAKE_INSTALL_PREFIX=.
-cmake --build .
+cmake --build build
 
 cd $WORKDIR
 
