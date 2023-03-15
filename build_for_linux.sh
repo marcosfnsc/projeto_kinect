@@ -45,7 +45,17 @@ cd $WORKDIR
 ## compile opencv
 cd third_party/opencv
 echo "compiling opencv"
-cmake -G Ninja -B build
+cmake \
+  -G Ninja \
+  -B build \
+  -DBUILD_JAVA=off \
+  -DBUILD_PERF_TESTS=OFF \
+  -DBUILD_PROTOBUF=OFF \
+  -DBUILD_TESTS=OFF \
+  -DBUILD_opencv_java_bindings_generator=OFF \
+  -DBUILD_opencv_js_bindings_generator=OFF \
+  -DBUILD_opencv_python_bindings_generator=OFF \
+  -DBUILD_opencv_python_tests=OFF
 cmake --build build
 
 cd $WORKDIR
