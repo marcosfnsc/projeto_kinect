@@ -5,6 +5,7 @@ WORKDIR /build
 # Install required system packages
 RUN apt-get update && apt-get -y install \
   #libusb-dev \
+  autoconf \
   build-essential \
   cmake \
   cython3 \

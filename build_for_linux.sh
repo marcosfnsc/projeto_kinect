@@ -4,6 +4,7 @@
 #[ ! -d "third_party/freeglut"     ] && git clone --depth 1 --branch v3.4.0        https://github.com/FreeGLUTProject/freeglut.git third_party/freeglut
 #[ ! -d "third_party/libfreenect"  ] && git clone --depth 1 --branch v0.6.4        https://github.com/OpenKinect/libfreenect.git   third_party/libfreenect
 [ ! -d "third_party/libfreenect2" ] && git clone --depth 1 --branch v0.2.1        https://github.com/OpenKinect/libfreenect2.git  third_party/libfreenect2
+[ ! -d "third_party/libusb"       ] && git clone --depth 1 --branch v1.0.26       https://github.com/libusb/libusb.git            third_party/libusb
 [ ! -d "third_party/opencv"       ] && git clone --depth 1 --branch 4.7.0         https://github.com/opencv/opencv.git            third_party/opencv
 
 WORKDIR=$PWD
@@ -30,15 +31,22 @@ cd third_party/libfreenect2
 echo "compiling libfreenect2"
 cmake \
   -G Ninja \
-  -B build \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_CXX11=ON \
   -DENABLE_OPENCL=ON \
   -DENABLE_CUDA=OFF \
   -DENABLE_TEGRAJPEG=OFF \
-  -DBUILD_EXAMPLES=ON \
+  -DBUILD_EXAMPLES=OFF \
+  -DBUILD_SHARED_LIBS=OFF \
   -DCMAKE_INSTALL_PREFIX=.
-cmake --build build
+cmake --build .
+
+cd $WORKDIR
+
+## compile libusb
+cd third_party/libusb
+echo "compiling libusb"
+./autogen.sh && make
 
 cd $WORKDIR
 
@@ -61,6 +69,5 @@ cmake --build build
 cd $WORKDIR
 
 echo "compiling the project"
-cmake -B build \
-  -Dfreenect2_DIR=third_party/libfreenect2
+cmake -B build
 cmake --build build
