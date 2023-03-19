@@ -1,28 +1,17 @@
-FROM debian:latest
+FROM archlinux:latest
 
 WORKDIR /build
 
 # Install required system packages
-RUN apt-get update && apt-get -y install \
-  #libusb-dev \
-  autoconf \
-  build-essential \
+RUN yes | pacman -Sy --needed \
+  base-devel \
   cmake \
-  cython3 \
-  freeglut3-dev \
   git \
-  libjpeg-dev \
-  libturbojpeg0 \
-  libturbojpeg0-dev \
-  libusb-1.0 \
-  libva-dev \
-  libva-drm2 \
-  libva2 \
-  ninja-build \
-  pkg-config \
-  python3-dev \
-  python3-numpy
-
+  libjpeg-turbo \
+  libusb \
+  libva \
+  libva \
+  ninja
 
 # create user non root
 ARG UID=1000
