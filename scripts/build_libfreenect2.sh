@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
-[ ! -d "third_party/libfreenect2" ] && git clone --depth 1 --branch v0.2.1        https://github.com/OpenKinect/libfreenect2.git  third_party/libfreenect2
+OpenNI2_LIBRARY_DIR="$PWD/third_party/OpenNI2"
+OpenNI2_INCLUDE_DIRS="$PWD/third_party/OpenNI2/include"
+
+[ ! -d "third_party/libfreenect2" ] && git clone --depth 1 --branch v0.2.1 https://github.com/OpenKinect/libfreenect2.git third_party/libfreenect2
 
 cd third_party/libfreenect2
 echo "compiling libfreenect2"
+mkdir -p build && cd build
 cmake \
-  -G Ninja \
+  .. \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_CXX11=ON \
   -DENABLE_OPENCL=OFF \
@@ -13,5 +17,6 @@ cmake \
   -DENABLE_TEGRAJPEG=OFF \
   -DBUILD_EXAMPLES=OFF \
   -DBUILD_SHARED_LIBS=OFF \
-  -DCMAKE_INSTALL_PREFIX=.
-cmake --build .
+  -DOpenNI2_LIBRARY=$OpenNI2_LIBRARY_DIR \
+  -DCMAKE_INSTALL_PREFIX=$PWD/..
+make
