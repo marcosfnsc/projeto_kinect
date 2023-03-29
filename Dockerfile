@@ -3,7 +3,7 @@ FROM archlinux:latest
 WORKDIR /build
 
 # Install required system packages
-RUN yes | pacman -Sy --needed --noconfirm \
+RUN pacman -Sy --needed --noconfirm \
   base-devel \
   cmake \
   curl \
