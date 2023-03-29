@@ -6,12 +6,13 @@ WORKDIR /build
 RUN yes | pacman -Sy --needed \
   base-devel \
   cmake \
+  curl \
   doxygen \
   freeglut \
   git \
   glfw-x11 \
   glu \
-  jdk8-openjdk \
+  java-environment \
   libjpeg-turbo \
   libusb \
   libva \
