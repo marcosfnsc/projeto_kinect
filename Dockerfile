@@ -15,8 +15,8 @@ RUN yes | pacman -Sy --needed \
   libjpeg-turbo \
   libusb \
   libva \
-  libva \
-  ninja
+  ninja \
+  systemd-libs
 
 # create user non root
 ARG UID=1000
