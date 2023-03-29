@@ -8,6 +8,7 @@ OpenNI2_INCLUDE_DIRS="$PWD/third_party/OpenNI2/include"
 cd third_party/libfreenect2
 echo "compiling libfreenect2"
 mkdir -p build && cd build
+cp -rf ../../OpenNI2/Include/* ../include/ # corrigido bug de não encontrar headers do OpenNI2
 cmake \
   .. \
   -DCMAKE_BUILD_TYPE=Release \
