@@ -3,21 +3,7 @@ FROM archlinux:latest
 WORKDIR /build
 
 # Install required system packages
-RUN yes | pacman -Sy --needed \
-  base-devel \
-  cmake \
-  curl \
-  doxygen \
-  freeglut \
-  git \
-  glfw-x11 \
-  glu \
-  java-environment \
-  libjpeg-turbo \
-  libusb \
-  libva \
-  ninja \
-  systemd-libs
+RUN pacman -Sy --needed base-devel cmake curl doxygen freeglut git glfw-x11 glu java-environment libjpeg-turbo libusb libva ninja --noconfirm
 
 # create user non root
 ARG UID=1000
