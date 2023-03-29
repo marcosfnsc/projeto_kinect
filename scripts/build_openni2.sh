@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+git config advice.detachedHead false # disable checkout message
 [ ! -d "third_party/OpenNI2" ] && git clone --depth 1 --branch v2.2.0-debian https://github.com/structureio/OpenNI2.git third_party/OpenNI2
 
 cd third_party/OpenNI2
@@ -9,7 +10,7 @@ curl https://aur.archlinux.org/cgit/aur.git/plain/0003-Use-system-wide-libjpeg.p
 curl https://aur.archlinux.org/cgit/aur.git/plain/0005-change-default-ni-drivers-path.patch\?h\=openni2             --output 0005-change-default-ni-drivers-path.patch
 curl https://aur.archlinux.org/cgit/aur.git/plain/0013-Fix-GCC6-compilation.patch\?h\=openni2                       --output 0013-Fix-GCC6-compilation.patch
 curl https://aur.archlinux.org/cgit/aur.git/plain/0014-fix-format-overflow-for-GCC7.patch\?h\=openni2               --output 0014-fix-format-overflow-for-GCC7.patch
-curl https://aur.archlinux.org/cgit/aur.git/plain/0015-Initialize-variable-for-gcc7.patc\?h\=openni2                --output 0015-Initialize-variable-for-gcc7.patc
+curl https://aur.archlinux.org/cgit/aur.git/plain/0015-Initialize-variable-for-gcc7.patch\?h\=openni2               --output 0015-Initialize-variable-for-gcc7.patch
 curl https://aur.archlinux.org/cgit/aur.git/plain/libopenni2.pc?h=openni2                                           --output libopenni2.pc
 
 # apply patches
