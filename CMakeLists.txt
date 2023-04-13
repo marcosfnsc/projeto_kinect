@@ -6,6 +6,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
+set(OpenCV_DIR ${PROJECT_SOURCE_DIR}/third_party/opencv/build)
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
 set(freenect2_DIR ${PROJECT_SOURCE_DIR}/third_party/libfreenect2/build)
 find_package(freenect2 REQUIRED)
 INCLUDE_DIRECTORIES(${freenect2_INCLUDE_DIR})
