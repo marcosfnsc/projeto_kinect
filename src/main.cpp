@@ -6,6 +6,8 @@
 #include <libfreenect2/libfreenect2.hpp>
 #include <libfreenect2/packet_pipeline.h>
 
+#include <opencv2/opencv.hpp>
+
 int main() {
   libfreenect2::Freenect2 freenect2;
   libfreenect2::Freenect2Device *dev = 0;
@@ -34,10 +36,26 @@ int main() {
   dev->setColorFrameListener(&listener);
   dev->setIrAndDepthFrameListener(&listener);
 
+
   // start
   dev->start();
   std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
   std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
+
+  listener.waitForNewFrame(frames);
+  libfreenect2::Frame *rgb   = frames[libfreenect2::Frame::Color];
+  libfreenect2::Frame *ir    = frames[libfreenect2::Frame::Ir];
+  libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+
+  cv::Mat rgb_mat, ir_mat, depth_mat;
+  cv::Mat(rgb->height, rgb->width, CV_8UC4, rgb->data).copyTo(rgb_mat);
+  cv::Mat(ir->height, ir->width, CV_32FC1, ir->data).copyTo(ir_mat);
+  cv::Mat(depth->height, depth->width, CV_32FC1, depth->data).copyTo(depth_mat);
+
+  cv::imshow("rgb", rgb_mat);
+  cv::imshow("ir", ir_mat / 4096.0f);
+  cv::imshow("depth", depth_mat / 4096.0f);
+
 
   // stop
   dev->stop();
