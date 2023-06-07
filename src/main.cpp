@@ -62,7 +62,11 @@ int main() {
     cv::Mat(ir->height, ir->width, CV_32FC1, ir->data).copyTo(ir_mat);
     cv::Mat(depth->height, depth->width, CV_32FC1, depth->data).copyTo(depth_mat);
 
+    cv::cvtColor(rgb_mat, rgb_mat, cv::COLOR_BGR2RGB);
+
+    cv::namedWindow("rgb", cv::WINDOW_NORMAL);
     cv::imshow("rgb", rgb_mat);
+    /*
     cv::imshow("ir", ir_mat / 4096.0f);
     cv::imshow("depth", depth_mat / 4096.0f);
 
@@ -75,6 +79,7 @@ int main() {
     cv::imshow("undistorted", depth_mat_undistorted / 4096.0f);
     cv::imshow("registered", rgb_d);
     cv::imshow("depth2RGB", rgb_d2 / 4096.0f);
+    */
 
     int key = cv::waitKey(1);
     loop_status = loop_status || (key > 0 && ((key & 0xFF) == 27));
